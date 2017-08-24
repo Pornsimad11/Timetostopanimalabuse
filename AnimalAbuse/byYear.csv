@@ -1,0 +1,261 @@
+abuse,date,amount
+All,2013-08,4
+All,2013-09,206
+All,2013-10,182
+All,2013-11,221
+All,2013-12,192
+All,2014-01,980
+All,2014-02,725
+All,2014-03,638
+All,2014-04,613
+All,2014-05,730
+All,2014-06,757
+All,2014-07,825
+All,2014-08,806
+All,2014-09,803
+All,2014-10,794
+All,2014-11,735
+All,2014-12,752
+All,2015-01,1067
+All,2015-02,1022
+All,2015-03,747
+All,2015-04,747
+All,2015-05,845
+All,2015-06,953
+All,2015-07,1043
+All,2015-08,924
+All,2015-09,881
+All,2015-10,821
+All,2015-11,702
+All,2015-12,789
+All,2016-01,1080
+All,2016-02,862
+All,2016-03,767
+All,2016-04,778
+All,2016-05,722
+All,2016-06,810
+All,2016-07,935
+All,2016-08,842
+All,2016-09,785
+All,2016-10,800
+All,2016-11,752
+All,2016-12,935
+All,2017-01,774
+All,2017-02,698
+All,2017-03,454
+Neglected,2013-08,3
+Neglected,2013-09,103
+Neglected,2013-10,78
+Neglected,2013-11,125
+Neglected,2013-12,102
+Neglected,2014-01,639
+Neglected,2014-02,456
+Neglected,2014-03,375
+Neglected,2014-04,314
+Neglected,2014-05,369
+Neglected,2014-06,364
+Neglected,2014-07,415
+Neglected,2014-08,404
+Neglected,2014-09,443
+Neglected,2014-10,420
+Neglected,2014-11,458
+Neglected,2014-12,486
+Neglected,2015-01,724
+Neglected,2015-02,724
+Neglected,2015-03,438
+Neglected,2015-04,405
+Neglected,2015-05,458
+Neglected,2015-06,476
+Neglected,2015-07,567
+Neglected,2015-08,452
+Neglected,2015-09,460
+Neglected,2015-10,464
+Neglected,2015-11,417
+Neglected,2015-12,432
+Neglected,2016-01,700
+Neglected,2016-02,540
+Neglected,2016-03,408
+Neglected,2016-04,409
+Neglected,2016-05,383
+Neglected,2016-06,424
+Neglected,2016-07,496
+Neglected,2016-08,418
+Neglected,2016-09,383
+Neglected,2016-10,431
+Neglected,2016-11,442
+Neglected,2016-12,624
+Neglected,2017-01,477
+Neglected,2017-02,412
+Neglected,2017-03,273
+Other,2013-09,48
+Other,2013-10,35
+Other,2013-11,45
+Other,2013-12,44
+Other,2014-01,202
+Other,2014-02,150
+Other,2014-03,160
+Other,2014-04,147
+Other,2014-05,168
+Other,2014-06,188
+Other,2014-07,242
+Other,2014-08,208
+Other,2014-09,188
+Other,2014-10,200
+Other,2014-11,136
+Other,2014-12,148
+Other,2015-01,192
+Other,2015-02,182
+Other,2015-03,166
+Other,2015-04,201
+Other,2015-05,207
+Other,2015-06,229
+Other,2015-07,255
+Other,2015-08,256
+Other,2015-09,239
+Other,2015-10,188
+Other,2015-11,163
+Other,2015-12,211
+Other,2016-01,206
+Other,2016-02,183
+Other,2016-03,195
+Other,2016-04,208
+Other,2016-05,190
+Other,2016-06,218
+Other,2016-07,263
+Other,2016-08,248
+Other,2016-09,235
+Other,2016-10,224
+Other,2016-11,178
+Other,2016-12,176
+Other,2017-01,170
+Other,2017-02,165
+Other,2017-03,108
+Tortured,2013-09,30
+Tortured,2013-10,35
+Tortured,2013-11,27
+Tortured,2013-12,17
+Tortured,2014-01,47
+Tortured,2014-02,47
+Tortured,2014-03,40
+Tortured,2014-04,81
+Tortured,2014-05,93
+Tortured,2014-06,95
+Tortured,2014-07,80
+Tortured,2014-08,96
+Tortured,2014-09,93
+Tortured,2014-10,99
+Tortured,2014-11,66
+Tortured,2014-12,49
+Tortured,2015-01,60
+Tortured,2015-02,56
+Tortured,2015-03,78
+Tortured,2015-04,66
+Tortured,2015-05,79
+Tortured,2015-06,155
+Tortured,2015-07,104
+Tortured,2015-08,116
+Tortured,2015-09,90
+Tortured,2015-10,81
+Tortured,2015-11,65
+Tortured,2015-12,91
+Tortured,2016-01,79
+Tortured,2016-02,68
+Tortured,2016-03,97
+Tortured,2016-04,71
+Tortured,2016-05,80
+Tortured,2016-06,83
+Tortured,2016-07,75
+Tortured,2016-08,83
+Tortured,2016-09,83
+Tortured,2016-10,87
+Tortured,2016-11,64
+Tortured,2016-12,62
+Tortured,2017-01,71
+Tortured,2017-02,56
+Tortured,2017-03,33
+Chained,2013-08,1
+Chained,2013-09,22
+Chained,2013-10,34
+Chained,2013-11,23
+Chained,2013-12,23
+Chained,2014-01,76
+Chained,2014-02,60
+Chained,2014-03,44
+Chained,2014-04,49
+Chained,2014-05,68
+Chained,2014-06,74
+Chained,2014-07,57
+Chained,2014-08,66
+Chained,2014-09,54
+Chained,2014-10,57
+Chained,2014-11,54
+Chained,2014-12,55
+Chained,2015-01,71
+Chained,2015-02,47
+Chained,2015-03,47
+Chained,2015-04,47
+Chained,2015-05,70
+Chained,2015-06,64
+Chained,2015-07,77
+Chained,2015-08,65
+Chained,2015-09,66
+Chained,2015-10,69
+Chained,2015-11,33
+Chained,2015-12,39
+Chained,2016-01,74
+Chained,2016-02,51
+Chained,2016-03,42
+Chained,2016-04,59
+Chained,2016-05,38
+Chained,2016-06,58
+Chained,2016-07,70
+Chained,2016-08,68
+Chained,2016-09,67
+Chained,2016-10,30
+Chained,2016-11,49
+Chained,2016-12,54
+Chained,2017-01,43
+Chained,2017-02,46
+Chained,2017-03,30
+In Car,2013-09,3
+In Car,2013-11,1
+In Car,2013-12,6
+In Car,2014-01,16
+In Car,2014-02,12
+In Car,2014-03,19
+In Car,2014-04,22
+In Car,2014-05,32
+In Car,2014-06,36
+In Car,2014-07,31
+In Car,2014-08,32
+In Car,2014-09,25
+In Car,2014-10,18
+In Car,2014-11,21
+In Car,2014-12,14
+In Car,2015-01,20
+In Car,2015-02,13
+In Car,2015-03,18
+In Car,2015-04,28
+In Car,2015-05,31
+In Car,2015-06,29
+In Car,2015-07,40
+In Car,2015-08,35
+In Car,2015-09,26
+In Car,2015-10,19
+In Car,2015-11,24
+In Car,2015-12,16
+In Car,2016-01,21
+In Car,2016-02,20
+In Car,2016-03,25
+In Car,2016-04,31
+In Car,2016-05,31
+In Car,2016-06,27
+In Car,2016-07,31
+In Car,2016-08,25
+In Car,2016-09,17
+In Car,2016-10,28
+In Car,2016-11,19
+In Car,2016-12,19
+In Car,2017-01,13
+In Car,2017-02,19
+In Car,2017-03,10

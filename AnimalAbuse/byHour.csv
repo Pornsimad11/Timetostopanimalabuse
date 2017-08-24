@@ -1,0 +1,143 @@
+abuseH,hour,amountH
+All,00,632
+All,01,396
+All,02,312
+All,03,211
+All,04,151
+All,05,179
+All,06,350
+All,07,768
+All,08,1223
+All,09,1785
+All,10,1952
+All,11,2028
+All,12,2225
+All,13,2291
+All,14,2172
+All,15,2177
+All,16,2246
+All,17,2112
+All,18,1972
+All,19,1773
+All,20,1673
+All,21,1536
+All,22,1321
+All,23,1013
+Neglected,00,394
+Neglected,01,240
+Neglected,02,179
+Neglected,03,119
+Neglected,04,90
+Neglected,05,108
+Neglected,06,221
+Neglected,07,450
+Neglected,08,702
+Neglected,09,1009
+Neglected,10,1086
+Neglected,11,1112
+Neglected,12,1214
+Neglected,13,1266
+Neglected,14,1177
+Neglected,15,1213
+Neglected,16,1185
+Neglected,17,1177
+Neglected,18,1151
+Neglected,19,1036
+Neglected,20,942
+Neglected,21,918
+Neglected,22,787
+Neglected,23,615
+Other,00,112
+Other,01,80
+Other,02,61
+Other,03,52
+Other,04,33
+Other,05,35
+Other,06,67
+Other,07,160
+Other,08,286
+Other,09,458
+Other,10,511
+Other,11,499
+Other,12,564
+Other,13,594
+Other,14,542
+Other,15,540
+Other,16,605
+Other,17,547
+Other,18,437
+Other,19,398
+Other,20,379
+Other,21,332
+Other,22,273
+Other,23,200
+Tortured,00,50
+Tortured,01,41
+Tortured,02,28
+Tortured,03,25
+Tortured,04,16
+Tortured,05,15
+Tortured,06,33
+Tortured,07,68
+Tortured,08,111
+Tortured,09,169
+Tortured,10,190
+Tortured,11,218
+Tortured,12,220
+Tortured,13,220
+Tortured,14,233
+Tortured,15,205
+Tortured,16,233
+Tortured,17,186
+Tortured,18,194
+Tortured,19,165
+Tortured,20,172
+Tortured,21,133
+Tortured,22,119
+Tortured,23,84
+Chained,00,60
+Chained,01,28
+Chained,02,36
+Chained,03,15
+Chained,04,10
+Chained,05,21
+Chained,06,27
+Chained,07,78
+Chained,08,96
+Chained,09,112
+Chained,10,125
+Chained,11,131
+Chained,12,164
+Chained,13,145
+Chained,14,141
+Chained,15,163
+Chained,16,153
+Chained,17,132
+Chained,18,137
+Chained,19,114
+Chained,20,125
+Chained,21,100
+Chained,22,97
+Chained,23,81
+In Car,00,16
+In Car,01,7
+In Car,02,8
+In Car,04,2
+In Car,06,2
+In Car,07,12
+In Car,08,28
+In Car,09,37
+In Car,10,40
+In Car,11,68
+In Car,12,63
+In Car,13,66
+In Car,14,79
+In Car,15,56
+In Car,16,70
+In Car,17,70
+In Car,18,53
+In Car,19,60
+In Car,20,55
+In Car,21,53
+In Car,22,45
+In Car,23,33

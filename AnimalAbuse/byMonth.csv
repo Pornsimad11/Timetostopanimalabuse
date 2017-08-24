@@ -1,0 +1,73 @@
+abuseM,month,amountM
+All,01,3901
+All,02,3307
+All,03,2606
+All,04,2138
+All,05,2297
+All,06,2520
+All,07,2803
+All,08,2576
+All,09,2675
+All,10,2597
+All,11,2410
+All,12,2668
+Neglected,01,2540
+Neglected,02,2132
+Neglected,03,1494
+Neglected,04,1128
+Neglected,05,1210
+Neglected,06,1264
+Neglected,07,1478
+Neglected,08,1277
+Neglected,09,1389
+Neglected,10,1393
+Neglected,11,1442
+Neglected,12,1644
+Other,01,770
+Other,02,680
+Other,03,629
+Other,04,556
+Other,05,565
+Other,06,635
+Other,07,760
+Other,08,712
+Other,09,710
+Other,10,647
+Other,11,522
+Other,12,579
+Tortured,01,257
+Tortured,02,227
+Tortured,03,248
+Tortured,04,218
+Tortured,05,252
+Tortured,06,333
+Tortured,07,259
+Tortured,08,295
+Tortured,09,296
+Tortured,10,302
+Tortured,11,222
+Tortured,12,219
+Chained,01,264
+Chained,02,204
+Chained,03,163
+Chained,04,155
+Chained,05,176
+Chained,06,196
+Chained,07,204
+Chained,08,200
+Chained,09,209
+Chained,10,190
+Chained,11,159
+Chained,12,171
+In Car,01,70
+In Car,02,64
+In Car,03,72
+In Car,04,81
+In Car,05,94
+In Car,06,92
+In Car,07,102
+In Car,08,92
+In Car,09,71
+In Car,10,65
+In Car,11,65
+In Car,12,55

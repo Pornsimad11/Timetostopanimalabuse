@@ -1,0 +1,499 @@
+<!-- Credits:http://bl.ocks.org/d3noob/e99a762017060ce81c76
+ -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+/*<head>
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+*/
+body { font: 12px Arial;
+background-color: #FFF9E1;}
+
+
+path { 
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+#cover{
+    width: 100%;
+    height: auto;
+}
+
+#area1  {
+  position: absolute;
+  top: 115%;
+  right: 35%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+#ment1  {
+  position: absolute;
+  top: 119%;
+  right: 12%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+#area2  {
+  position: absolute;
+  top: 163%;
+  left: 35%;
+  margin-top: -50px;
+  margin-right: -100px;
+}
+
+#ment2  {
+  position: absolute;
+  top: 164%;
+  left: 0%;
+  margin-top: -50px;
+  margin-right: -100px;
+}
+
+#area3  {
+  position: absolute;
+  top: 210%;
+  right: 35%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+#ment3  {
+  position: absolute;
+  top: 204%;
+  right: 0%;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+#area4  {
+  position: absolute;
+  top: 258%;
+  left: 35%;
+  margin-top: -50px;
+  margin-right: -100px;
+}
+
+#ment4  {
+  position: absolute;
+  top: 258%;
+  left: 12%;
+  margin-top: -50px;
+  margin-right: -100px;
+}
+
+#overall  {
+position: absolute;
+top: 308%;
+width: 99%;
+height: auto;
+margin-top: -50px;
+margin-right: -100px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+.legend {
+    font-size: 12px;
+    font-weight: bold;
+    text-anchor: middle;
+}
+
+</style>
+
+<div id="cover"> <img src="image/cover.png" width="100%" height="auto"></div>
+<div id="area1"></div>
+<div id="ment1"> <img src="image/chart1_ment.png" width="100%" height="auto"></div>
+<div id="area2"></div>
+<div id="ment2"> <img src="image/chart2_ment.png" width="100%" height="auto"></div>
+<div id="area3"></div>
+<div id="ment3"> <img src="image/chart3_ment.png" width="100%" height="auto"></div>
+<div id="area4"></div>
+<div id="ment4"> <img src="image/chart4_ment.png" width="100%" height="auto"></div>
+<div id="overall"> <img src="image/overall.png" width="100%" height="auto"></div>
+<body>
+<!-- <script src="http://code.jquery.com/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script> -->
+<!-- load the d3.js library -->    
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<script>
+
+// Set the dimensions of the canvas / graph
+var margin = {top: 30, right: 20, bottom: 70, left: 50},
+    width = 800- margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+// Parse the date / time
+var parseDate = d3.time.format("%Y-%m").parse;
+
+// Set the ranges
+var x = d3.time.scale().range([0, width]);
+var x2 = d3.time.scale().range([0, width]);
+var x3 = d3.time.scale().range([0, width]);
+var x4 = d3.time.scale().range([0, width]);
+
+var y = d3.scale.linear().range([height, 0]);
+
+
+// Define the axes
+
+var xAxis = d3.svg.axis().scale(x)
+    .orient("bottom").ticks(7);
+
+var xAxis2 = d3.svg.axis().scale(x2)
+    .orient("bottom").ticks(7)
+    .tickFormat(d3.time.format("%b"));
+
+var xAxis3 = d3.svg.axis(x3)
+    .scale(x3)
+    .orient("bottom").ticks(5)
+    .tickFormat(d3.time.format("%a"));
+
+var xAxis4 = d3.svg.axis(x3)
+    .scale(x4)
+    .orient("bottom").ticks(20)
+    .tickFormat(d3.time.format("%H"));
+
+var yAxis = d3.svg.axis().scale(y)
+    .orient("left").ticks(7);
+
+var yAxis3 = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+// Define the line
+var valueline = d3.svg.line()   
+    .x(function(d) { return x(d.date); })
+    .y(function(d) { return y(d.amount); });
+    
+// Adds the svg canvas
+var chart1 = d3.select("#area1")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", 
+              "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Get the data
+d3.csv("byYear.csv", function(error, data) {
+    data.forEach(function(d) {
+        d.date = parseDate(d.date);
+        d.amount = +d.amount;
+    });
+
+    // Scale the range of the data
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3.max(data, function(d) { return d.amount; })]);
+
+    // Nest the entries by abuse
+    var dataNest = d3.nest()
+        .key(function(d) {return d.abuse;})
+        .entries(data);
+
+    var color = d3.scale.category10();   // set the colour scale
+
+    legendSpace = width/dataNest.length; // spacing for the legend
+
+    // Loop through each abuse / key
+    dataNest.forEach(function(d,i) { 
+
+        chart1.append("path")
+            .attr("class", "line")
+            .style("stroke", function() { // Add the colours dynamically
+                return d.color = color(d.key); })
+            .attr("id", 'tag1'+d.key.replace(/\s+/g, '')) // assign ID
+            .attr("d", valueline(d.values));
+
+        // Add the Legend
+        chart1.append("text")
+            .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
+            .attr("y", height + (margin.bottom/2)+ 5)
+            .attr("class", "legend")    // style the legend
+            .style("fill", function() { // Add the colours dynamically
+                return d.color = color(d.key); })
+            .on("click", function(){
+                // Determine if current line is visible 
+                var active   = d.active ? false : true,
+                newOpacity = active ? 0 : 1; 
+                // Hide or show the elements based on the ID
+                d3.select("#tag1"+d.key.replace(/\s+/g, ''))
+                    .transition().duration(100) 
+                    .style("opacity", newOpacity); 
+                // Update whether or not the elements are active
+                d.active = active;
+                })  
+            .text(d.key); 
+
+    });
+
+    // Add the X Axis
+    chart1.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    // Add the Y Axis
+    chart1.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+});
+
+var parseMonth = d3.time.format("%m").parse;
+
+
+
+var valueline2 = d3.svg.line()   
+    .x(function(d) { return x2(d.month); })
+    .y(function(d) { return y(d.amountM); });
+
+var chart2 = d3.select("#area2")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", 
+              "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Get the data
+d3.csv("byMonth.csv", function(error, data) {
+    data.forEach(function(d) {
+        d.month = parseMonth(d.month);
+        d.amountM = +d.amountM;
+    });
+
+    // Scale the range of the data
+    x2.domain(d3.extent(data, function(d) { return d.month; }));
+    y.domain([0, d3.max(data, function(d) { return d.amountM; })]);
+
+    // Nest the entries by abuse
+    var dataNest = d3.nest()
+        .key(function(d) {return d.abuseM;})
+        .entries(data);
+
+    var color = d3.scale.category10();   // set the colour scale
+
+    legendSpace = width/dataNest.length; // spacing for the legend
+
+    // Loop through each abuse / key
+    dataNest.forEach(function(d,i) { 
+
+        chart2.append("path")
+            .attr("class", "line")
+            .style("stroke", function() { // Add the colours dynamically
+                return d.color = color(d.key); })
+            .attr("id", 'tag2'+d.key.replace(/\s+/g, '')) // assign ID
+            .attr("d", valueline2(d.values));
+
+        // Add the Legend
+        chart2.append("text")
+            .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
+            .attr("y", height + (margin.bottom/2)+ 5)
+            .attr("class", "legend")    // style the legend
+            .style("fill", function() { // Add the colours dynamically
+                return d.color = color(d.key); })
+            .on("click", function(){
+                // Determine if current line is visible 
+                var active   = d.active ? false : true,
+                newOpacity = active ? 0 : 1; 
+                // Hide or show the elements based on the ID
+                d3.select("#tag2"+d.key.replace(/\s+/g, ''))
+                    .transition().duration(100) 
+                    .style("opacity", newOpacity); 
+                // Update whether or not the elements are active
+                d.active = active;
+                })  
+            .text(d.key); 
+
+    });
+
+    // Add the X Axis
+    chart2.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis2);
+
+    // Add the Y Axis
+    chart2.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+});
+
+var parseDay = d3.time.format("%d/%m/%Y").parse;
+
+
+var valueline3 = d3.svg.line()   
+    .x(function(d) { return x3(d.day); })
+    .y(function(d) { return y(d.amountD); });
+
+var chart3 = d3.select("#area3")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", 
+              "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Get the data
+d3.csv("byDay.csv", function(error, data) {
+    data.forEach(function(d) {
+        d.day = parseDay(d.day);
+        d.amountD = +d.amountD;
+    });
+
+    // Scale the range of the data
+    x3.domain(d3.extent(data, function(d) { return d.day; }));
+    y.domain([0, d3.max(data, function(d) { return d.amountD; })]);
+
+    // Nest the entries by abuse
+    var dataNest = d3.nest()
+        .key(function(d) {return d.abuseD;})
+        .entries(data);
+
+    var color = d3.scale.category10();   // set the colour scale
+
+    legendSpace = width/dataNest.length; // spacing for the legend
+
+    // Loop through each abuse / key
+    dataNest.forEach(function(d,i) { 
+
+        chart3.append("path")
+            .attr("class", "line")
+            .style("stroke", function() { // Add the colours dynamically
+                return d.color = color(d.key); })
+            .attr("id", 'tag3'+d.key.replace(/\s+/g, '')) // assign ID
+            .attr("d", valueline3(d.values));
+
+        // Add the Legend
+        chart3.append("text")
+            .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
+            .attr("y", height + (margin.bottom/2)+ 5)
+            .attr("class", "legend")    // style the legend
+            .style("fill", function() { // Add the colours dynamically
+                return d.color = color(d.key); })
+            .on("click", function(){
+                // Determine if current line is visible 
+                var active   = d.active ? false : true,
+                newOpacity = active ? 0 : 1; 
+                // Hide or show the elements based on the ID
+                d3.select("#tag3"+d.key.replace(/\s+/g, ''))
+                    .transition().duration(100) 
+                    .style("opacity", newOpacity); 
+                // Update whether or not the elements are active
+                d.active = active;
+                })  
+            .text(d.key); 
+
+    });
+
+    // Add the X Axis
+    chart3.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis3);
+
+    // Add the Y Axis
+    chart3.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+});
+
+var parseHour = d3.time.format("%H").parse;
+
+
+var valueline4 = d3.svg.line()   
+    .x(function(d) { return x4(d.hour); })
+    .y(function(d) { return y(d.amountH); });
+
+var chart4 = d3.select("#area4")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", 
+              "translate(" + margin.left + "," + margin.top + ")");
+
+
+// Get the data
+d3.csv("byHour.csv", function(error, data) {
+    data.forEach(function(d) {
+        d.hour = parseHour(d.hour);
+        d.amountH = +d.amountH;
+    });
+
+    // Scale the range of the data
+    x4.domain(d3.extent(data, function(d) { return d.hour; }));
+    y.domain([0, d3.max(data, function(d) { return d.amountH; })]);
+
+    // Nest the entries by abuse
+    var dataNest = d3.nest()
+        .key(function(d) {return d.abuseH;})
+        .entries(data);
+
+    var color = d3.scale.category10();   // set the colour scale
+
+    legendSpace = width/dataNest.length; // spacing for the legend
+
+    // Loop through each abuse / key
+    dataNest.forEach(function(d,i) { 
+
+        chart4.append("path")
+            .attr("class", "line")
+            .style("stroke", function() { // Add the colours dynamically
+                return d.color = color(d.key); })
+            .attr("id", 'tag4'+d.key.replace(/\s+/g, '')) // assign ID
+            .attr("d", valueline4(d.values));
+
+        // Add the Legend
+        chart4.append("text")
+            .attr("x", (legendSpace/2)+i*legendSpace)  // space legend
+            .attr("y", height + (margin.bottom/2)+ 5)
+            .attr("class", "legend")    // style the legend
+            .style("fill", function() { // Add the colours dynamically
+                return d.color = color(d.key); })
+            .on("click", function(){
+                // Determine if current line is visible 
+                var active   = d.active ? false : true,
+                newOpacity = active ? 0 : 1; 
+                // Hide or show the elements based on the ID
+                d3.select("#tag4"+d.key.replace(/\s+/g, ''))
+                    .transition().duration(100) 
+                    .style("opacity", newOpacity); 
+                // Update whether or not the elements are active
+                d.active = active;
+                })  
+            .text(d.key); 
+
+    });
+
+    // Add the X Axis
+    chart4.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis4);
+
+    // Add the Y Axis
+    chart4.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+});
+
+
+</script>
+</body>
